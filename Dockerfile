@@ -13,9 +13,9 @@ COPY . /var/www/html
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --optimize-autoloader
 
-# 1. PRIMERO creamos la base de datos y migramos
-RUN touch database/database.sqlite
+# 1. Migramos y sembramos (sin borrar la base de datos que ya copiaste)
 RUN php artisan migrate --force
+RUN php artisan db:seed --force
 RUN php artisan storage:link
 
 # 2. AL FINAL damos los permisos para que Laravel pueda escribir
