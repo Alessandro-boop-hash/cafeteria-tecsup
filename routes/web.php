@@ -29,9 +29,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 Route::get('/forzar-categorias', function () {
     \Illuminate\Support\Facades\DB::table('categorias')->insert([
-        ['nombre' => 'Cafés'],
-        ['nombre' => 'Fríos'],
-        ['nombre' => 'Infusiones']
+        ['nombre' => 'Cafés', 'descripcion' => 'Bebidas a base de café'],
+        ['nombre' => 'Fríos', 'descripcion' => 'Bebidas frías y frappés'],
+        ['nombre' => 'Infusiones', 'descripcion' => 'Tés e infusiones calientes']
     ]);
     return '¡Categorias insertadas! Ya puedes volver a la pagina de bebidas.';
 });
