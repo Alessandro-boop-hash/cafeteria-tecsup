@@ -27,3 +27,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/forzar-categorias', function () {
+    \Illuminate\Support\Facades\DB::table('categorias')->insert([
+        ['nombre' => 'Cafés'],
+        ['nombre' => 'Fríos'],
+        ['nombre' => 'Infusiones']
+    ]);
+    return '¡Categorias insertadas! Ya puedes volver a la pagina de bebidas.';
+});
